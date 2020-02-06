@@ -4,75 +4,75 @@
 #include "version.h"
 
 #define BASE 0 // Default Base Layer
-#define SPMD 1 // Keypad and Arrow Keys
-#define PGMD 2 // Programming
+#define NAVI 1 // Arrow Keys
+// #define NUMB 2 // Numbers and Functions
+#define SYMB 2 // Symbols
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Keymap 0: Base Layer */
     [BASE] = LAYOUT( // layer 0 : default
         // left hand
-        KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6,
-        KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_PSCR,
-        LCTL_T(KC_ESC), KC_A, KC_S, KC_D, KC_F, KC_G, KC_LBRC,
-        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B,
-        KC_MEH, KC_HYPR, KC_LCTRL, KC_LGUI, KC_LALT,
-                                             KC_MPRV, KC_MNXT,
-                                                      KC_MPLY,
-                  LT(SPMD, KC_SPC), LT(PGMD, KC_ENT), KC_MUTE,
+        KC_ESC,         KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       KC_6,
+        KC_TAB,         KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_PSCR,
+        LCTL_T(KC_ESC), KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       XXXXXXX,
+        KC_LSFT,        KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,
+        XXXXXXX,        XXXXXXX,    XXXXXXX,    KC_LGUI,    KC_LALT,
+                                                                                    KC_MPRV,    KC_MNXT,
+                                                                                                KC_MPLY,
+                                                            LT(NAVI, KC_SPC), LT(SYMB, KC_ENT), KC_MUTE,
 
         // right hand
-        KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_GRAVE,
-        KC_BSLS, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
-        KC_RBRC, KC_H, KC_J, KC_K, KC_L, KC_SCLN, RCTL_T(KC_QUOT),
-                 KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
-                       KC_RALT, KC_RGUI, KC_RCTRL, KC_HYPR, KC_MEH,
+        KC_7,           KC_8,       KC_9,       KC_0,       KC_MINS,    KC_EQL,     KC_GRAVE,
+        XXXXXXX,        KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_BSPC,
+        XXXXXXX,        KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,    RCTL_T(KC_QUOT),
+                        KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSFT,
+                                    KC_RALT,    KC_RGUI,    XXXXXXX,    XXXXXXX,    XXXXXXX,
         KC_LEFT, KC_RGHT,
         KC_VOLU,
-        KC_VOLD, LT(PGMD, KC_ENT), LT(SPMD, KC_SPC)),
+        KC_VOLD, LT(SYMB, KC_ENT), LT(NAVI, KC_SPC)),
 
-    /* Keymap 1: Arrow and Mouse Keys */
-    [SPMD] = LAYOUT(
+    [NAVI] = LAYOUT(
         // left hand
-        AG_NORM, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6,
-        _______, KC_SLSH, KC_7, KC_8, KC_9, LSFT(KC_8), _______,
-        _______, KC_MINS, KC_4, KC_5, KC_6, LSFT(KC_EQL), _______,
-        _______, KC_0, KC_1, KC_2, KC_3, KC_DOT,
-        _______, _______, _______, _______, _______,
-        KC_SPC, _______,
-        _______,
-        _______, _______, _______,
+        RESET,      KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,
+        AG_NORM,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    _______,
+        AG_SWAP,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_BTN1,    KC_BTN2,    _______,
+        _______,    XXXXXXX,    XXXXXXX,    KC_ACL0,    KC_ACL1,    KC_ACL2,
+        _______,    _______,    _______,    _______,    _______,
+                                                                                _______,    _______,
+                                                                                            _______,
+                                                                    _______,    _______,    _______,
 
         // right hand
-        KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, AG_SWAP,
-        _______, _______, _______, _______, _______, _______, _______,
-        _______, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_VOLD, KC_VOLU,
-        _______, _______, KC_MPRV, KC_MNXT, KC_MPLY, _______,
-        _______, _______, _______, _______, _______,
-        _______, KC_SPC,
+        KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     _______,
+        _______,    KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,     KC_MPRV,    KC_MNXT,
+        _______,    KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT,    KC_VOLD,    KC_VOLU,
+                    KC_MS_L,    KC_MS_D,    KC_MS_U,    KC_MS_R,    KC_MUTE,    KC_MPLY,
+                                _______,    _______,    _______,    _______,    _______,
+        _______,    _______,
         _______,
-        _______, _______, _______),
+        _______,    _______,        _______),
 
     /* Keymap 2: Programming */
-    [PGMD] = LAYOUT(
+    [SYMB] = LAYOUT(
         // left hand
-        _______, KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18,
-        _______, _______, LSFT(KC_QUOT), LSFT(KC_LBRC), LSFT(KC_RBRC), LSFT(KC_7), _______,
-        _______, _______, KC_QUOT, LSFT(KC_9), LSFT(KC_0), LSFT(KC_BSLS), _______,
-        _______, _______, KC_GRAVE, KC_LBRC, KC_RBRC, _______,
-        _______, _______, _______, _______, _______,
-                                                      KC_ENT, _______,
-                                                              _______,
-                                            _______, _______, _______,
+        _______,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        _______,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,    XXXXXXX,
+        _______,    KC_PIPE,    KC_PLUS,    KC_UNDS,    KC_LCBR,    KC_LPRN,    XXXXXXX,
+        _______,    KC_BSLS,    KC_TILD,    KC_GRAVE,   KC_LBRC,    KC_LT,
+        _______,    _______,    _______,    _______,    _______,
+                                                                                _______,    _______,
+                                                                                            _______,
+                                                                    _______,    _______,    _______,
 
         // right hand
-        KC_F19, KC_F20, KC_F21, KC_F22, KC_F23, KC_F24, _______,
-        _______, KC_EQL, LSFT(KC_7), LSFT(KC_8), _______, _______, _______,
-        _______, LSFT(KC_1), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_SCLN), LSFT(KC_QUOT),
-                 _______, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_SLSH), _______,
-                          _______, _______, _______, _______, _______,
-        _______, KC_ENT,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    _______,
+        _______,    KC_CIRC,    KC_AMPR,    KC_ASTR,    XXXXXXX,    XXXXXXX,    _______,
+        _______,    KC_RPRN,    KC_RCBR,    KC_MINS,    KC_EQL,     XXXXXXX,    _______,
+                    KC_GT,      KC_RBRC,    KC_COMM,    KC_DOT,     KC_SLSH,    _______,
+                                _______,    _______,    _______,    _______,    _______,
+        _______,    _______,
         _______,
-        _______, _______, _______),
+        _______,    _______,    _______),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
