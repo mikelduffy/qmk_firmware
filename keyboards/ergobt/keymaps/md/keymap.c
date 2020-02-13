@@ -4,60 +4,61 @@
 #include "version.h"
 
 #define BASE 0 // Default Base Layer
-#define NAVI 1 // Arrow Keys
-// #define NUMB 2 // Numbers and Functions
-#define SYMB 2 // Symbols
+#define NUMB 1 // Numbers and Functions
+#define PROG 2 // Symbols
+#define NAVI 3 // Arrow Keys
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Keymap 0: Base Layer */
     [BASE] = LAYOUT( // layer 0 : default
         // left hand
-        KC_ESC,         KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       KC_6,
+        KC_ESC,         KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       XXXXXXX,
         KC_TAB,         KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_PSCR,
         LCTL_T(KC_ESC), KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       XXXXXXX,
         KC_LSFT,        KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,
         XXXXXXX,        XXXXXXX,    XXXXXXX,    KC_LGUI,    KC_LALT,
                                                                                     KC_MPRV,    KC_MNXT,
                                                                                                 KC_MPLY,
-                                                            LT(NAVI, KC_SPC), LT(SYMB, KC_ENT), KC_MUTE,
+                                                            LT(NAVI, KC_SPC), LT(PROG, KC_ENT), KC_MUTE,
 
         // right hand
-        KC_7,           KC_8,       KC_9,       KC_0,       KC_MINS,    KC_EQL,     KC_GRAVE,
-        XXXXXXX,        KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_BSPC,
-        XXXXXXX,        KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,    RCTL_T(KC_QUOT),
-                        KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSFT,
-                                    KC_RALT,    KC_RGUI,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,        KC_6,       KC_7,         KC_8,       KC_9,       KC_0,       KC_GRAVE,
+        XXXXXXX,        KC_Y,       KC_U,         KC_I,       KC_O,       KC_P,       KC_BSPC,
+        XXXXXXX,        KC_H,       KC_J,         KC_K,       KC_L,       KC_SCLN,    RCTL_T(KC_QUOT),
+                        KC_N,       KC_M,         KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSFT,
+                                    MO(NUMB),     KC_RGUI,    XXXXXXX,    XXXXXXX,    XXXXXXX,
         KC_LEFT, KC_RGHT,
         KC_VOLU,
-        KC_VOLD, LT(SYMB, KC_ENT), LT(NAVI, KC_SPC)),
+        KC_VOLD, LT(PROG, KC_ENT), LT(NAVI, KC_SPC)),
 
-    [NAVI] = LAYOUT(
+    /* Keymap 1: Numbers and Functions */
+    [NUMB] = LAYOUT(
         // left hand
-        RESET,      KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,
-        AG_NORM,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    _______,
-        AG_SWAP,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_BTN1,    KC_BTN2,    _______,
-        _______,    XXXXXXX,    XXXXXXX,    KC_ACL0,    KC_ACL1,    KC_ACL2,
+        RESET,      XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        AG_TOGG,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       XXXXXXX,
+        _______,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      XXXXXXX,
+        _______,    KC_F11,     KC_F12,     KC_F13,     KC_F14,     KC_F15,
         _______,    _______,    _______,    _______,    _______,
                                                                                 _______,    _______,
                                                                                             _______,
                                                                     _______,    _______,    _______,
 
         // right hand
-        KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     _______,
-        _______,    KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,     KC_MPRV,    KC_MNXT,
-        _______,    KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT,    KC_VOLD,    KC_VOLU,
-                    KC_MS_L,    KC_MS_D,    KC_MS_U,    KC_MS_R,    KC_MUTE,    KC_MPLY,
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       _______,
+        XXXXXXX,    KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     _______,
+                    KC_F16,     KC_F17,     KC_F18,     KC_F19,     KC_F20,     _______,
                                 _______,    _______,    _______,    _______,    _______,
         _______,    _______,
         _______,
-        _______,    _______,        _______),
+        _______,    _______,    _______),
 
     /* Keymap 2: Programming */
-    [SYMB] = LAYOUT(
+    [PROG] = LAYOUT(
         // left hand
         _______,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
         _______,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,    XXXXXXX,
-        _______,    KC_PIPE,    KC_PLUS,    KC_UNDS,    KC_LCBR,    KC_LPRN,    XXXXXXX,
+        _______,    KC_PIPE,    KC_PLUS,    KC_UNDS,    KC_LPRN,    KC_LCBR,    XXXXXXX,
         _______,    KC_BSLS,    KC_TILD,    KC_GRAVE,   KC_LBRC,    KC_LT,
         _______,    _______,    _______,    _______,    _______,
                                                                                 _______,    _______,
@@ -66,13 +67,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
         // right hand
         XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    _______,
-        _______,    KC_CIRC,    KC_AMPR,    KC_ASTR,    XXXXXXX,    XXXXXXX,    _______,
-        _______,    KC_RPRN,    KC_RCBR,    KC_MINS,    KC_EQL,     XXXXXXX,    _______,
+        XXXXXXX,    KC_CIRC,    KC_AMPR,    KC_ASTR,    XXXXXXX,    XXXXXXX,    _______,
+        XXXXXXX,    KC_RCBR,    KC_RPRN,    KC_MINS,    KC_EQL,     XXXXXXX,    _______,
                     KC_GT,      KC_RBRC,    KC_COMM,    KC_DOT,     KC_SLSH,    _______,
                                 _______,    _______,    _______,    _______,    _______,
         _______,    _______,
         _______,
         _______,    _______,    _______),
+
+    /* Keymap 3: Navigation */
+    [NAVI] = LAYOUT(
+        // left hand
+        _______,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        _______,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        _______,    XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_BTN1,    KC_BTN2,    XXXXXXX,
+        _______,    XXXXXXX,    XXXXXXX,    KC_ACL0,    KC_ACL1,    KC_ACL2,
+        _______,    _______,    _______,    _______,    _______,
+                                                                                _______,    _______,
+                                                                                            _______,
+                                                                    _______,    _______,    _______,
+
+        // right hand
+        XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,    XXXXXXX,
+        XXXXXXX,    KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,     XXXXXXX,    XXXXXXX,
+        XXXXXXX,    KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT,    XXXXXXX,    XXXXXXX,
+                    KC_MS_L,    KC_MS_D,    KC_MS_U,    KC_MS_R,    XXXXXXX,    XXXXXXX,
+                                _______,    _______,    _______,    _______,    _______,
+        _______,    _______,
+        _______,
+        _______,    _______,        _______),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
