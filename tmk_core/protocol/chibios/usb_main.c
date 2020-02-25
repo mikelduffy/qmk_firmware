@@ -732,7 +732,7 @@ void shared_in_cb(USBDriver *usbp, usbep_t ep) {
  */
 
 #ifdef EXTRAKEY_ENABLE
-static void send_extra_report(uint8_t report_id, uint16_t data) {
+static void send_extra(uint8_t report_id, uint16_t data) {
     osalSysLock();
     if (usbGetDriverStateI(&USB_DRIVER) != USB_ACTIVE) {
         osalSysUnlock();
@@ -744,15 +744,19 @@ static void send_extra_report(uint8_t report_id, uint16_t data) {
     usbStartTransmitI(&USB_DRIVER, SHARED_IN_EPNUM, (uint8_t *)&report, sizeof(report_extra_t));
     osalSysUnlock();
 }
+#endif
 
-void send_system(uint16_t data) { send_extra_report(REPORT_ID_SYSTEM, data); }
+void send_system(uint16_t data) {
+#ifdef EXTRAKEY_ENABLE
+    send_extra(REPORT_ID_SYSTEM, data);
+#endif
+}
 
-void send_consumer(uint16_t data) { send_extra_report(REPORT_ID_CONSUMER, data); }
-
-#else  /* EXTRAKEY_ENABLE */
-void send_system(uint16_t data) { (void)data; }
-void send_consumer(uint16_t data) { (void)data; }
-#endif /* EXTRAKEY_ENABLE */
+void send_consumer(uint16_t data) {
+#ifdef EXTRAKEY_ENABLE
+    send_extra(REPORT_ID_CONSUMER, data);
+#endif
+}
 
 /* ---------------------------------------------------------
  *                   Console functions
@@ -833,7 +837,17 @@ bool recv_midi_packet(MIDI_EventPacket_t *const event) {
     size_t size = chnReadTimeout(&drivers.midi_driver.driver, (uint8_t *)event, sizeof(MIDI_EventPacket_t), TIME_IMMEDIATE);
     return size == sizeof(MIDI_EventPacket_t);
 }
-
+void midi_ep_task(void) {
+    uint8_t buffer[MIDI_STREAM_EPSIZE];
+    size_t  size = 0;
+    do {
+        size_t size = chnReadTimeout(&drivers.midi_driver.driver, buffer, sizeof(buffer), TIME_IMMEDIATE);
+        if (size > 0) {
+            MIDI_EventPacket_t event;
+            recv_midi_packet(&event);
+        }
+    } while (size > 0);
+}
 #endif
 
 #ifdef VIRTSER_ENABLE
