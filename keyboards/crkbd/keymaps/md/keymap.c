@@ -24,17 +24,12 @@ enum layers {
   _ADJUST
 };
 
-// Custom keycodes for layer keys
-// Dual function escape with left command
-#define KC_LGESC LGUI_T(KC_ESC)
-
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
   LOWER,
   RAISE,
   ADJUST,
   RGBRST,
-  KC_RACL // right alt / colon
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -52,37 +47,37 @@ LCTL_T(KC_ESC),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                     
 
   [_LOWER] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, KC_TRNS,\
+      KC_TRNS, RGB_VAI, RGB_HUI, RGB_SAI, RGB_MOD, KC_PSCR,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, KC_TRNS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, KC_TRNS,\
+      KC_TRNS, RGB_VAD, RGB_HUD, RGB_SAD,RGB_RMOD, RGB_TOG,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, KC_TRNS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TRNS,\
+      KC_TRNS, XXXXXXX, XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2,                      KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX, KC_TRNS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                        KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS \
+                                        KC_TRNS,   KC_TRNS,  KC_TRNS, XXXXXXX,   KC_BTN1, KC_BTN2 \
                                       //`--------------------------'  `--------------------------'
     ),
 
   [_RAISE] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_TILD,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_TRNS,\
+     KC_GRAVE,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_TRNS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX, KC_LPRN, KC_LCBR,                      KC_RCBR, KC_RPRN,  KC_EQL, KC_MINS, KC_BSLS, KC_TRNS,\
+      KC_TRNS, XXXXXXX, XXXXXXX, KC_PIPE, KC_LPRN, KC_LCBR,                      KC_RCBR, KC_RPRN,  KC_EQL, KC_MINS, KC_BSLS, KC_TRNS,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_TRNS, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC,   KC_LT,                        KC_GT, KC_RBRC, KC_UNDS, KC_PLUS, KC_PIPE, KC_TRNS,\
+      KC_TRNS, XXXXXXX, XXXXXXX, KC_UNDS, KC_LBRC,   KC_LT,                        KC_GT, KC_RBRC, KC_PLUS, KC_UNDS, KC_PIPE, KC_TRNS,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                        KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS \
+                                        KC_TRNS,   KC_TRNS,  XXXXXXX, KC_TRNS,   KC_TRNS, XXXXXXX \
                                       //`--------------------------'  `--------------------------'
   ),
 
   [_ADJUST] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        RESET,  KC_F1,    KC_F2,   KC_F3,   KC_F4,    KC_5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX,\
+        RESET,  KC_F1,    KC_F2,   KC_F3,   KC_F4,    KC_5,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_F11,   KC_F12,  KC_F13,  KC_F14,  KC_F15,                       KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20, XXXXXXX,\
+      XXXXXXX,  KC_F6,    KC_F7,   KC_F8,   KC_F9,  KC_F10,                       KC_LEFT, KC_VOLD, KC_VOLU,KC_RIGHT, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
+      XXXXXXX, KC_F11,   KC_F12,  KC_F13,  KC_F14,  KC_F15,                      KC_MPLY,  KC_MUTE, KC_MPRV, KC_MNXT, XXXXXXX, XXXXXXX,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                        KC_TRNS,   KC_TRNS,  KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS \
+                                        KC_TRNS,   KC_TRNS,  XXXXXXX, XXXXXXX,   KC_TRNS, KC_TRNS \
                                       //`--------------------------'  `--------------------------'
   )
 
@@ -323,8 +318,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
     // set_timelog();
   }
-  static uint16_t my_colon_timer;
-
   switch (keycode) {
     case LOWER:
       if (record->event.pressed) {
@@ -349,17 +342,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           layer_on(_ADJUST);
         } else {
           layer_off(_ADJUST);
-        }
-        return false;
-    case KC_RACL:
-        if (record->event.pressed) {
-          my_colon_timer = timer_read();
-          register_code(KC_RALT);
-        } else {
-          unregister_code(KC_RALT);
-          if (timer_elapsed(my_colon_timer) < TAPPING_TERM) {
-            SEND_STRING(":"); // Change the character(s) to be sent on tap here
-          }
         }
         return false;
     case RGBRST:

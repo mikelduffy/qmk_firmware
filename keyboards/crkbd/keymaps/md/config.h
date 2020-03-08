@@ -24,8 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 
-#define MASTER_LEFT
-// #define MASTER_RIGHT
+// #define MASTER_LEFT
+#define MASTER_RIGHT
 // #define EE_HANDS
 
 // #define SSD1306OLED
@@ -71,11 +71,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Disable the animations you don't want/need.  You will need to disable a good number of these    *
  * because they take up a lot of space.  Disable until you can successfully compile your firmware. */
-#   define DISABLE_RGB_MATRIX_ALPHAS_MODS
+// #   define DISABLE_RGB_MATRIX_ALPHAS_MODS
 #   define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 #   define DISABLE_RGB_MATRIX_BREATHING
 #   define DISABLE_RGB_MATRIX_BAND_SAT
-// #   define DISABLE_RGB_MATRIX_BAND_VAL
+#   define DISABLE_RGB_MATRIX_BAND_VAL
 #   define DISABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
 #   define DISABLE_RGB_MATRIX_BAND_PINWHEEL_VAL
 #   define DISABLE_RGB_MATRIX_BAND_SPIRAL_SAT
@@ -98,7 +98,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE
-// #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
+#   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_CROSS
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTICROSS
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS
